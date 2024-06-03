@@ -19,8 +19,8 @@ const projetosInativos = document.querySelectorAll(".projeto:not(.ativo)");
 
 botaoMostrarProjetos.addEventListener("click", () => {
   console.log("Botão Clicado!");
-  mostrarMaisProjetos();
-  esconderBotao();
+  mostrarProjetos();
+  mudarTextoBotao (botaoMostrarProjetos);
 });
   function esconderBotao() {
   console.log("Escondendo botão...");
@@ -33,3 +33,23 @@ function mostrarMaisProjetos() {
     projetoInativo.classList.add("ativo");
   });
 }
+
+// Essa função foi criada para determinar que se há uma classe ela vai buscar, se não houver, ela vai adicionar essa classe no elemento. Se o projeto já estiver com a classe, ela vai tirar. 
+
+function mostrarProjetos () {
+  projetosInativos.forEach((projetoInativo)=> {
+    projetoInativo.classList.toggle("ativo")
+  })
+}
+
+// função mudar o texto do botão 
+
+function mudarTextoBotao (botao) {
+  if (botao.textContent === "Mostrar mais") {
+    botaoMostrarProjetos.textContent = "Mostrar menos"
+  }else {
+    botaoMostrarProjetos.textContent = "Mostrar mais"
+  }
+}
+
+
